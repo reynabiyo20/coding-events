@@ -7,10 +7,10 @@
 
 <form method="post">
     <div class="form-group">
-        <label>Category Name
-            <input th:field="${eventCategory.name}" class="form-control">
+        <label>Type Name
+            <input th:field="${eventType.name}" class="form-control">
         </label>
-        <span th:errors="${eventCategory.name}" class="error"></span>
+        <span th:errors="${eventType.name}" class="error"></span>
     </div>
     <input type="submit" value="Create" class="btn btn-primary">
 </form>

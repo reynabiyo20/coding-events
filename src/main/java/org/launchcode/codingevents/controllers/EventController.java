@@ -100,7 +100,7 @@ public class EventController {
             model.addAttribute("title", "Invalid Event ID: " + eventId);
         } else {
             Event event = result.get();
-            model.addAttribute("title", event.getName() + " Details");
+            model.addAttribute("title", event.getEventName() + " Details");
             model.addAttribute("event", event);
             model.addAttribute("tags", event.getTags());
         }
@@ -113,7 +113,7 @@ public class EventController {
     public String displayAddTagForm(@RequestParam Integer eventId, Model model){
         Optional<Event> result = eventRepository.findById(eventId);
         Event event = result.get();
-        model.addAttribute("title", "Add Tag to: " + event.getName());
+        model.addAttribute("title", "Add Tag to: " + event.getEventName());
         model.addAttribute("tags", tagRepository.findAll());
         EventTagDTO eventTag = new EventTagDTO();
         eventTag.setEvent(event);

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container">
+
+<header th:replace="fragments :: header"></header>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Type Name</th>
+    </tr>
+    </thead>
+    <tr th:each="type : ${types}">
+        <td><a th:text="${type.name}" th:href="'/events?TypeId=' + ${type.id}"></a></td>
+    </tr>
+
+</table>
+
+</body>
+</html>

@@ -16,7 +16,7 @@ public class Event extends AbstractEntity {
 
     @NotBlank(message = "Name is required")
     @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
-    private String name;
+    private String eventName;
 
     @OneToOne(cascade = CascadeType.ALL)
     @Valid
@@ -24,25 +24,33 @@ public class Event extends AbstractEntity {
     private EventDetails eventDetails;
 
     @ManyToOne
+    @Valid
     @NotNull(message = "Category is required")
     private EventCategory eventCategory;
+
+    @ManyToOne
+    @Valid
+    @NotNull(message = "Type is required")
+    private EventType eventType;
+
 
     @ManyToMany
     private final List<Tag> tags = new ArrayList<>();
 
-    public Event(String name, EventCategory eventCategory) {
-        this.name = name;
+    public Event(String name, EventCategory eventCategory, EventType eventType) {
+        this.eventName = name;
         this.eventCategory = eventCategory;
+        this.eventType = eventType;
     }
 
     public Event() {}
 
-    public String getName() {
-        return name;
+    public String getEventName() {
+        return eventName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setEventName(String eventName) {
+        this.eventName = eventName;
     }
 
     public EventCategory getEventCategory() {
@@ -51,6 +59,14 @@ public class Event extends AbstractEntity {
 
     public void setEventCategory(EventCategory eventCategory) {
         this.eventCategory = eventCategory;
+    }
+
+    public EventType getEventType() {
+        return eventType;
+    }
+
+    public void setEventType(EventType eventType) {
+        this.eventType = eventType;
     }
 
     public EventDetails getEventDetails() {
@@ -71,7 +87,7 @@ public class Event extends AbstractEntity {
 
     @Override
     public String toString() {
-        return name;
+        return eventName;
     }
 
 }
